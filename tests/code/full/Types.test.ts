@@ -1,11 +1,11 @@
 import {ChildComponent_NS, IntegratedComponent_NS} from "../../../src/code/full/Types";
 import {FilteredKeysByType, Subset, Super, Superset, WithoutFunctions} from "../../../src/code/full/utils/Types";
 import {ComponentI, ComponentIT, IntegrationContainerI} from "./utils/TestDataStructures";
-import isChildComponent = ChildComponent_NS.isChildComponent;
 import ChildComponentsMapWithinIntergrationContainer = ChildComponent_NS.ChildComponentsMapWithinIntergrationContainer;
 import CoverageByChildComponentsArray = ChildComponent_NS.CoverageByChildComponentsArray;
 import IntegrationContainerChildComponentsArray = ChildComponent_NS.IntegrationContainerChildComponentsArray;
 import IntegrateableComponent = IntegratedComponent_NS.IntegrateableComponent;
+import isChildComponent = ChildComponent_NS.isChildComponent;
 
 describe("Child components", () => {
 
@@ -152,20 +152,20 @@ describe("Child components", () => {
             >
         >
 
-        const aaa: a2 = {
-            component1FunctionToShareWithIntegration(a: number): string {
-                return "";
-            },
-            component1FunctionToHideFromIntegration(a: number): string {
-                return "";
-            },
-            component2FunctionToShareWithIntegration(a: number): string {
-                return "";
-            },
-            component2FunctionToHideFromIntegration(a: number): string {
-                return "";
-            }
-        }
+        // const aaa: a2 = {
+        //     component1FunctionToShareWithIntegration(a: number): string {
+        //         return "";
+        //     },
+        //     component1FunctionToHideFromIntegration(a: number): string {
+        //         return "";
+        //     },
+        //     component2FunctionToShareWithIntegration(a: number): string {
+        //         return "";
+        //     },
+        //     component2FunctionToHideFromIntegration(a: number): string {
+        //         return "";
+        //     }
+        // }
     })
 
 })
@@ -224,7 +224,7 @@ describe("IntegratedComponent", () => {
             component1FunctionToHideFromIntegration(a: number): string
             integrationFunction(a: number): string
             integrationTakeoverFunction(a: number): string
-            integrationTakeoverFunction1(a: number): string
+            // integrationTakeoverFunction1(a: number): string
         }
 
         // define types
@@ -263,9 +263,32 @@ describe("IntegratedComponent", () => {
         // }
 
         type xafds = ChildComponent_NS.CoverageByChildComponentsArray<TestComponent1I> & Pick<TestIntegrationContainerI,FilteredKeysByType<TestIntegrationContainerI, Function>>
+        type xafds1 = Pick<TestComponent1I,FilteredKeysByType<TestComponent1I, Function>> & Pick<TestIntegrationContainerI,FilteredKeysByType<TestIntegrationContainerI, Function>>
         type xafdss = Partial<Super<xafds>>
 
-        type xxx = Superset<DesiredIntegratedComponentInterface, xafds>
+        type integrateAbleInterface = IntegrateableComponent<
+            TestComponent1I,
+            TestIntegrationContainerI,
+            DesiredIntegratedComponentInterface
+        >
+
+        let asdf: integrateAbleInterface = {
+            component1FunctionToShareWithIntegration: function (a: number): string {
+                throw new Error("Function not implemented.");
+            },
+            component1FunctionToHideFromIntegration: function (a: number): string {
+                throw new Error("Function not implemented.");
+            },
+            integrationFunction: function (a: number): string {
+                throw new Error("Function not implemented.");
+            },
+            integrationTakeoverFunction: function (a: number): string {
+                throw new Error("Function not implemented.");
+            }
+        }
+
+        type xxx = Superset<DesiredIntegratedComponentInterface, xafds1>
+
 
         // type xxx<T, xafdss > = T
         // type afdsfdsa = xxx<DesiredIntegratedComponentInterface>
@@ -288,12 +311,38 @@ describe("IntegratedComponent", () => {
         type afdskjhfdsa = Subset<DesiredIntegratedComponentInterface, (ChildComponent_NS.CoverageByChildComponentsArray<TestComponent1I> & Pick<TestIntegrationContainerI,FilteredKeysByType<TestIntegrationContainerI, Function>>)>
 
         type integrateableComponentType = IntegrateableComponent<
-            TestComponent1I, TestIntegrationContainerI, DesiredIntegratedComponentInterface
+            TestComponent1I,
+            TestIntegrationContainerI,
+            DesiredIntegratedComponentInterface
         >
 
-        const fdsa: integrateableComponentType = {
-
+        function xafdsafds<a,b,c, T = IntegrateableComponent<
+            TestComponent1I,
+            TestIntegrationContainerI,
+            DesiredIntegratedComponentInterface
+        >>(t: T): T {
+           return t
         }
+
+        const fdsa = {
+            component1FunctionToShareWithIntegration(a: number): string {
+                return "";
+            },
+            component1FunctionToHideFromIntegration(a: number): string {
+                return "";
+            },
+            integrationFunction(a: number): string {
+                return ""
+            },
+            integrationTakeoverFunction(a: number): string {
+                return ""
+            },
+        }
+        xafdsafds<
+            TestComponent1I,
+            TestIntegrationContainerI,
+            DesiredIntegratedComponentInterface
+        >(fdsa)
 
         const realIntegratedComponent = {
             component1FunctionToShareWithIntegration(a: number): string {

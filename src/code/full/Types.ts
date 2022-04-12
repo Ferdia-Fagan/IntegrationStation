@@ -2,7 +2,7 @@ import {
     FilteredKeysByNotType, FilteredKeysByType,
     KeyThatDoNotMapToFunction,
     MergeTypeDominatingLeft,
-    NotFunction, Subset, Super, Superset,
+    NotFunction, NoType, Subset, Super, Superset,
     UnionToIntersection,
     WithoutFunctions
 } from "./utils/Types";
@@ -64,7 +64,7 @@ export namespace ChildComponent_NS {
         Cc,
         CcRefName extends keyof Iccc,
         Iccc extends IntegrationContainer_NS.ParentContainerOfChildComponent<Cc, CcRefName, Iccc>
-    > (potentialChildComponent: unknown, ccRefName: CcRefName, iccc: unknown): potentialChildComponent is ChildComponent<Cc, CcRefName, Iccc> {
+    > (potentialChildComponent: unknown, ccRefName: CcRefName, iccc: Iccc): potentialChildComponent is ChildComponent<Cc, CcRefName, Iccc> {
         return iccc[ccRefName] == potentialChildComponent
     }
 
@@ -111,7 +111,7 @@ export namespace IntegratedComponent_NS {
         Cc,
         refName extends keyof Iccc,
         Iccc
-        > = {
+    > = {
         [k in keyof Partial<MergeTypeDominatingLeft<
             Iccc,
             Cc
@@ -125,12 +125,43 @@ export namespace IntegratedComponent_NS {
     }
 
     // (ChildComponent_NS.CoverageByChildComponentsArray<Cc> & Pick<Iccc,FilteredKeysByType<Iccc, Function>>)
-    // export type IntegrateableComponent<
-    //     Cc extends ChildComponent_NS.ChildComponentT<Iccc>,
-    //     Iccc,
-    //     Ic,
-    //     T = (ChildComponent_NS.CoverageByChildComponentsArray<Cc> & Pick<Iccc,FilteredKeysByType<Iccc, Function>>) extends Ic ? Ic : never
-    // > = Ic
+    export type IntegrateableComponent<
+        Cc extends ChildComponent_NS.ChildComponentT<Iccc>,
+        Iccc,
+        Ic,
+        T = NoType<(Pick<
+            Cc,
+            FilteredKeysByType<
+                Cc,
+                Function
+                >
+            >
+        &
+        Pick<
+        Iccc,
+        FilteredKeysByType<
+        Iccc,
+        Function
+        >
+        > extends Ic ? Ic : never), ""> // ERROR MESSAGE
+            // (ChildComponent_NS.CoverageByChildComponentsArray<Cc>
+            // &
+            // Pick<
+            //     Iccc,
+            //     FilteredKeysByType<Iccc, Function>
+            // >) // extends Ic ? Ic : never// extends Ic ? Ic : never
+    > = Ic
+            // ChildComponent_NS.CoverageByChildComponentsArray<
+        //     Cc
+        //     >
+        // &
+        // Pick<
+        //     Iccc,
+        //     FilteredKeysByType<
+        //         Iccc,
+        //         Function
+        //         >
+        // > extends Ic ? Ic : undefined
         // {
         // [key in keyof (ChildComponent_NS.CoverageByChildComponentsArray<Cc> & Pick<Iccc,FilteredKeysByType<Iccc, Function>>)]: (
         //     (ChildComponent_NS.CoverageByChildComponentsArray<Cc> & Pick<Iccc,FilteredKeysByType<Iccc, Function>>)[key] extends infer R ? (ChildComponent_NS.CoverageByChildComponentsArray<Cc> & Pick<Iccc,FilteredKeysByType<Iccc, Function>>)[key] : never

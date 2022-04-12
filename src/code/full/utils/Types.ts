@@ -23,6 +23,27 @@ export type WithoutFunctions<T> = {
     [key in FilteredKeysByNotType<T, Function>]: T[key]
 }
 
+export type ErrorBrand<Err extends string> = Readonly<{
+    [key in Err]: void;
+}>;
+
+export type Filter<Obj extends Object, ValueType> = {
+    [Key in keyof Obj
+        as ValueType extends Obj[Key] ? Key : never]
+    : Obj[Key]
+}
+
+// export type IsNever<T> = [T] extends [never] ? true : false;
+
+type TypePropertyIsNotAllowed<error_message extends string> =
+    error_message;
+export type NoType<T, error_message extends string> = T extends { type: any }
+    ? TypePropertyIsNotAllowed<error_message>
+    : T;
+
+export type IsNever<T> = [T] extends [never] ? true : false
+type x = IsNever<never>
+type y = IsNever<{ name: "Alexey" }>
 // export type WithoutFunctions<T> = {
 //     [key in keyof T]: T[key] extends Function ? never : T[key]
 // }[keyof T]
