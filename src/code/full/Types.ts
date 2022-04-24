@@ -1,6 +1,6 @@
 import {
     FilteredKeysByNotType, FilteredKeysByType,
-    KeyThatDoNotMapToFunction,
+    KeysOfPropertiesOfT,
     MergeTypeDominatingLeft,
     NotFunction, NoType, Subset, Super, Superset,
     UnionToIntersection,
@@ -129,7 +129,7 @@ export namespace IntegratedComponent_NS {
         Cc extends ChildComponent_NS.ChildComponentT<Iccc>,
         Iccc,
         Ic,
-        T = NoType<(Pick<
+        T = (Pick<
             Cc,
             FilteredKeysByType<
                 Cc,
@@ -142,8 +142,8 @@ export namespace IntegratedComponent_NS {
         FilteredKeysByType<
         Iccc,
         Function
-        >
-        > extends Ic ? Ic : never), ""> // ERROR MESSAGE
+    >
+        > extends Ic ? Ic : never) // ERROR MESSAGE
             // (ChildComponent_NS.CoverageByChildComponentsArray<Cc>
             // &
             // Pick<

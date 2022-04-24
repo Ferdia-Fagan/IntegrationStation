@@ -1,11 +1,11 @@
 import {ChildComponent_NS, IntegratedComponent_NS} from "../../../src/code/full/Types";
 import {FilteredKeysByType, Subset, Super, Superset, WithoutFunctions} from "../../../src/code/full/utils/Types";
-import {ComponentI, ComponentIT, IntegrationContainerI} from "./utils/TestDataStructures";
-import ChildComponentsMapWithinIntergrationContainer = ChildComponent_NS.ChildComponentsMapWithinIntergrationContainer;
-import CoverageByChildComponentsArray = ChildComponent_NS.CoverageByChildComponentsArray;
-import IntegrationContainerChildComponentsArray = ChildComponent_NS.IntegrationContainerChildComponentsArray;
-import IntegrateableComponent = IntegratedComponent_NS.IntegrateableComponent;
+import {ComponentI, IntegrationContainerI} from "./utils/TestDataStructures";
 import isChildComponent = ChildComponent_NS.isChildComponent;
+import ChildComponentsMapWithinIntergrationContainer = ChildComponent_NS.ChildComponentsMapWithinIntergrationContainer;
+import IntegrationContainerChildComponentsArray = ChildComponent_NS.IntegrationContainerChildComponentsArray;
+import CoverageByChildComponentsArray = ChildComponent_NS.CoverageByChildComponentsArray;
+import IntegrateableComponent = IntegratedComponent_NS.IntegrateableComponent;
 
 describe("Child components", () => {
 

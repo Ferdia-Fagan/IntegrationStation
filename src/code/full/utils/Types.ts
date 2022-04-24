@@ -17,7 +17,14 @@ export type UnionToIntersection<U> =
 
 export type FilteredKeysByType<T, U> = { [P in keyof T]: T[P] extends U ? P : never }[keyof T];
 export type FilteredKeysByNotType<T, U> = { [P in keyof T]: T[P] extends U ? never : P }[keyof T];
-export type KeyThatDoNotMapToFunction<T> = FilteredKeysByNotType<T, Function>
+export type KeysOfPropertiesOfT<T> = FilteredKeysByNotType<T, Function>
+export type KeysOfMethodsOfT<T> = FilteredKeysByType<T, Function>
+
+export type TWithOnlyProperties<T> = Pick<T, KeysOfPropertiesOfT<T>>
+export type TWithOnlyMethods<T> = Pick<T, KeysOfMethodsOfT<T>>
+// export type KeyPropertiesOfT<T> = FilteredKeysByNotType<T, Function>
+// export type MethodPropertiesOfT<T> = FilteredKeysByType<T, Function>
+
 
 export type WithoutFunctions<T> = {
     [key in FilteredKeysByNotType<T, Function>]: T[key]
@@ -44,6 +51,16 @@ export type NoType<T, error_message extends string> = T extends { type: any }
 export type IsNever<T> = [T] extends [never] ? true : false
 type x = IsNever<never>
 type y = IsNever<{ name: "Alexey" }>
+
+export type AType<T, U> = T extends U ? U extends T ? T : [T, U] : [T, U]
+
+export type TypesAreTheSame<L, R> =
+    Exclude<L, R> extends never ?
+        Exclude<R, L> extends never ? true : false
+    : false
+
+export type IsTWithinUnion<T, U> = T extends U ? true : false
+
 // export type WithoutFunctions<T> = {
 //     [key in keyof T]: T[key] extends Function ? never : T[key]
 // }[keyof T]

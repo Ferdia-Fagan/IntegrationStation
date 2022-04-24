@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1650403029330" clover="3.2.0">
+  <project timestamp="1650403029330" name="All files">
+    <metrics statements="2" coveredstatements="2" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2" elements="8" coveredelements="8" complexity="0" loc="2" ncloc="2" packages="1" files="1" classes="1"/>
+    <file name="Types_V2.ts" path="/home/empeor/work/typescript/IntegrationStation/src/code/full/Types_V2.ts">
+      <metrics statements="2" coveredstatements="2" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+      <line num="9" count="1" type="cond" truecount="2" falsecount="0"/>
+      <line num="11" count="1" type="cond" truecount="2" falsecount="0"/>
+    </file>
+  </project>
+</coverage>
