@@ -1,5 +1,5 @@
 import {assert, IsExact, IsNever} from "conditional-type-checks";
-import {IntegrationContainer_NS} from "../Types_V2";
+import {IntegrationContainer_NS} from "../Types";
 import CoverageOfContainerAndComponents = IntegrationContainer_NS.Types.Transformations.CoverageOfContainerAndComponents;
 import CoverageOfContainerAndComponentsArray = IntegrationContainer_NS.Types.Transformations.CoverageOfContainerAndComponentsArray;
 

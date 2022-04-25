@@ -1,4 +1,4 @@
-import {ChildComponent_NS, IntegratedComponent_NS} from "../../../src/code/full/Types";
+import {ChildComponent_NS, IntegratedComponent_NS} from "../../../src/code/dump/Types.txt";
 import {FilteredKeysByType, Subset, Super, Superset, WithoutFunctions} from "../../../src/code/full/utils/Types";
 import {ComponentI, IntegrationContainerI} from "./utils/TestDataStructures";
 import isChildComponent = ChildComponent_NS.isChildComponent;
