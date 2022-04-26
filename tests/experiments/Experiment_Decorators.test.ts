@@ -1,33 +1,49 @@
+import {IntegrationContainer_NS} from "../../src/code/full/Types";
+import ChildComponentOfContainer = IntegrationContainer_NS.Types.Transformations.ChildComponentOfContainer;
 
-function ClassDecorator(constructor: Function) {
-    console.log("ClassDecorator called")
-    constructor.prototype.x = 10
+export function ClassDecorator<T>(x: (keyof ChildComponentOfContainer<T>)[]) {
+    return function Helper(constructor: Function) {
+        console.log("ClassDecorator called")
+        constructor.prototype.x = 100
+    }
+}
+
+export function ClassDecoratorT<T>(y: number) {
+    return function Helper<T extends { new (...args: any[]): {} }>(constructor: T) {
+        console.log("ReportableClassDecorator called first")
+        return class extends constructor {
+            y = y;
+        };
+    }
 }
 
 function ReportableClassDecorator<T extends { new (...args: any[]): {} }>(constructor: T) {
     console.log("ReportableClassDecorator called first")
     return class extends constructor {
-        x = 20;
+        y = 20;
     };
 }
 
-interface X {
-    x?: Number
+interface TheClassToDecorate1 {
+    x: Number
 }
 
-@ClassDecorator
-class TheClassToDecorate1 implements X {
-
+@ClassDecorator<TheClassToDecorate1>(['x', 'x'])
+class TheClassToDecorate1 {
     constructor() {
         console.log("TheClassToDecorate1 constructor called")
     }
 
 }
 
-@ReportableClassDecorator
+interface TheClassToDecorate2 {
+    y: Number
+}
+@ClassDecoratorT<TheClassToDecorate2>(10)
 class TheClassToDecorate2 {
 
-    constructor() {
+    constructor(a: number) {
+        this.y = a
         console.log("TheClassToDecorate2 constructor called")
     }
 
@@ -38,12 +54,12 @@ console.log("---------------------STARTED---------------------")
 describe('decorators', () => {
 
     it('test', () => {
-        let inst1 = new TheClassToDecorate1() as (TheClassToDecorate1 & X)
-        let inst2 = new TheClassToDecorate2() as (TheClassToDecorate2 & X)
+        let inst1 = new TheClassToDecorate1()
+        let inst2 = new TheClassToDecorate2(10)
 
         expect(true).toBe(true)
-        expect(inst1.x).toBe(10)
-        expect(inst2.x).toBe(20)
+        expect(inst1.x).toBe(100)
+        expect(inst2.y).toBe(20)
     })
 
 })

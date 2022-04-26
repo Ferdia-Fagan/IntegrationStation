@@ -1,4 +1,5 @@
-import {assert} from "conditional-type-checks";
+import {assert, IsExact} from "conditional-type-checks";
+import {DoesLTypeExtendsRType} from "../../../../tests/testingUtils/TypeTesting";
 import {IntegratedComponent_NS, IntegrationContainer_NS} from "../Types";
 import CoverageOfContainerAndComponentsArray = IntegrationContainer_NS.Types.Transformations.CoverageOfContainerAndComponentsArray;
 import CoverageOfContainerAndComponents = IntegrationContainer_NS.Types.Transformations.CoverageOfContainerAndComponents;
@@ -79,7 +80,8 @@ describe('IntegratedComponent_NS', () => {
                     return 0;
                 }, function2(): number {
                     return 0;
-                }, function3(): number {
+                }
+                , function3(): number {
                     return 0;
                 }
 
@@ -95,13 +97,52 @@ describe('IntegratedComponent_NS', () => {
                     return 0;
                 }, function2(): number {
                     return 0;
-                }, function3(): number {
+                }
+                , function3(): number {
                     return 0;
                 }
 
             }
 
+            interface right {
+                function1(): number
+                function2(): number
+                function3(): number
+            }
 
+            interface wrong {
+                function1(): number
+                function2(): number
+                function5(): number
+            }
+
+            assert<DoesLTypeExtendsRType<Required<DesiredIntegratedComponentInterface>, Required<integrableComponent>>>(true)
+            // type X1 = Pick<right, keyof Required<integrableComponent>>
+            // type X = Exclude<right, >
+            // type fdslkj = keyof Required<integrableComponent>
+            // function OIJKDXSOn(d: fdslkj): fdslkj {
+            //     return d
+            // }
+            // OIJKDXSOn("function1")
+
+            interface XXX {
+                first(): number
+                second(): number
+            }
+
+            interface YYY {
+                first(): number
+                second(): number
+            }
+
+            // const irew: Omit<XXX, keyof Pick<XXX, keyof YYY>> = {
+            //     first(): number {
+            //         return 109
+            //     }
+            // }
+            //
+            // assert<DoesLTypeExtendsRType<right,Required<integrableComponent>>>(true)
+            // assert<DoesLTypeExtendsRType<integrableComponent,wrong>>(false)
 
         })
 

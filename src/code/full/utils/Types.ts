@@ -64,3 +64,7 @@ export type IsTWithinUnion<T, U> = T extends U ? true : false
 // export type WithoutFunctions<T> = {
 //     [key in keyof T]: T[key] extends Function ? never : T[key]
 // }[keyof T]
+
+export interface Constructor<T> {
+    new (...args: any[]): T;
+}

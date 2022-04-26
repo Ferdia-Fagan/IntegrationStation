@@ -112,20 +112,29 @@ export namespace IntegrationContainer_NS {
 
         export namespace Transformations {
 
-            import CoverageByComponentsArray = ChildComponent_NS.Types.Transformations.CoverageByComponentsArray;
             import ChildComponentT = ChildComponent_NS.Types.ChildComponentT;
+
+            /**
+             * Get total coverage of container and all components
+             * TODO: Components should be able to be specified with decorator
+             */
+            export type CoverageOfContainer<
+                Iccc
+            > = Partial<UnionToIntersection<
+                ChildComponentOfContainer<Iccc> & TWithOnlyMethods<Iccc>
+            >>
 
             export type CoverageOfContainerAndComponents<
                 Iccc,
                 componentKeys extends KeysOfPropertiesOfT<Iccc>
             > =
-                UnionToIntersection<Iccc[componentKeys]> & TWithOnlyMethods<Iccc>
+                Partial<UnionToIntersection<Iccc[componentKeys]> & TWithOnlyMethods<Iccc>>
 
             export type CoverageOfContainerAndComponentsArray<
                 Iccc,
                 Ccs extends ChildComponentT<Iccc>
             > =
-                UnionToIntersection<Ccs & TWithOnlyMethods<Iccc>>
+                Partial<UnionToIntersection<Ccs & TWithOnlyMethods<Iccc>>>
             
             export type CoverageOfContainerAndComponentsType<
                 Iccc,
@@ -134,6 +143,17 @@ export namespace IntegrationContainer_NS {
                 Ccs extends ChildComponentT<Iccc> ? CoverageOfContainerAndComponentsArray<Iccc, Ccs> : 
                     Ccs extends KeysOfPropertiesOfT<Iccc> ? CoverageOfContainerAndComponents<Iccc, Ccs> : 
                         never
+
+            /**
+             * *** IntegrationChildComponentContainer ***
+             *
+             * Gets all properties (filtering methods) from Iccc
+             */
+            export type ChildComponentOfContainer<Iccc> =
+                                                        UnionToIntersection<
+                                                            TWithOnlyProperties<Iccc>
+                                                        >
+
 
         }
 
@@ -192,5 +212,7 @@ export namespace IntegratedComponent_NS {
     }
 
 }
+
+export type IsCovered<L extends R, R> = Pick<L, keyof R>
 
 

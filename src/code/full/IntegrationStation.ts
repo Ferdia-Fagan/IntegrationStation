@@ -1,13 +1,7 @@
+import {ChildComponent_NS, IntegratedComponent_NS, IntegrationContainer_NS} from "./Types";
+import IntegrationChildComponentContainerIntegrationConstructor = IntegrationContainer_NS.Types.IntegrationChildComponentContainerIntegrationConstructor;
 
-// single:
 
-// import {
-//     ChildComponent_NS,
-//     IntegratedComponent_NS,
-//     IntegrationChildComponentContainer, IntegrationChildComponentContainerIntegrationConstructor,
-//     ParentContainerOfChildComponent
-// } from "./Types";
-//
 // function integrateIntegrationChildComponentContainer<
 //     Cc,
 //     refName extends keyof Iccc,

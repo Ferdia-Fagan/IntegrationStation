@@ -52,14 +52,14 @@ describe('IntegrationContainer_NS', () => {
             // then
             assert<IsNever<coverageOfXAndY>>(false)
             assert<IsNever<TheSpread>>(false)
-            assert<IsNever<Exclude<coverageOfXAndY, TheSpread>>>(true)
+            assert<IsNever<Exclude<coverageOfXAndY, Partial<TheSpread>>>>(true)
             assert<IsNever<Exclude<TheSpread, coverageOfXAndY>>>(true)
 
             assert<IsNever<NotTheSpread>>(false)
             assert<IsNever<Exclude<coverageOfXAndY, NotTheSpread>>>(false)
             assert<IsNever<Exclude<Required<NotTheSpread>, Required<coverageOfXAndY>>>>(true)
 
-            assert<IsExact<coverageOfXAndY, TheSpread>>(true)
+            assert<IsExact<coverageOfXAndY, Partial<TheSpread>>>(true)
             assert<IsExact<coverageOfXAndY, NotTheSpread>>(false)
         })
 
@@ -102,14 +102,14 @@ describe('IntegrationContainer_NS', () => {
             // then
             assert<IsNever<coverageOfXAndY>>(false)
             assert<IsNever<TheSpread>>(false)
-            assert<IsNever<Exclude<coverageOfXAndY, TheSpread>>>(true)
+            assert<IsNever<Exclude<coverageOfXAndY, Partial<TheSpread>>>>(true)
             assert<IsNever<Exclude<TheSpread, coverageOfXAndY>>>(true)
 
             assert<IsNever<NotTheSpread>>(false)
             assert<IsNever<Exclude<coverageOfXAndY, NotTheSpread>>>(false)
             assert<IsNever<Exclude<Required<NotTheSpread>, Required<coverageOfXAndY>>>>(true)
 
-            assert<IsExact<coverageOfXAndY, TheSpread>>(true)
+            assert<IsExact<coverageOfXAndY, Partial<TheSpread>>>(true)
             assert<IsExact<coverageOfXAndY, NotTheSpread>>(false)
         })
 

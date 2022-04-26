@@ -11,8 +11,8 @@
         "outDir": "./extension/src",
         "baseUrl": "./node_modules",
         "rootDirs": ["./src/TS"],
-        "strict": false,
-        "alwaysStrict": false
+        "strict": true,
+        "alwaysStrict": true
     },
 
     "include": [
