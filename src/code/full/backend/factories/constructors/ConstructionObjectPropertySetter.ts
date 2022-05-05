@@ -1,5 +1,5 @@
-import {ChildComponent_NS} from "../backend/categories/types/preIntegration/ChildComponent/ChildComponent";
-import {TWithOnlyMethods, TWithOnlyProperties} from "./Types";
+import {ChildComponent_NS} from "../../categories/types/integration/preIntegration/ChildComponent/ChildComponent";
+import {TWithOnlyMethods, TWithOnlyProperties} from "../../categories/types/utils/Filtering";
 import ValidChildComponent = ChildComponent_NS.Types.Transformations.ValidChildComponent;
 
 export declare const PropertyOfT: unique symbol
@@ -44,3 +44,6 @@ export abstract class ConstructorWithPropertiesA<
     }
 }
 
+export interface Constructor<T> {
+    new(...args: any[]): T;
+}

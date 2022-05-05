@@ -1,4 +1,4 @@
-import {IntegrationContainer_NS} from "../../src/code/full/backend/categories/types/preIntegration/IntegrationContainer/IntegrationContainer";
+import {IntegrationContainer_NS} from "../../src/code/full/backend/categories/types/integration/preIntegration/IntegrationContainer/IntegrationContainer";
 import ChildComponentOfContainer = IntegrationContainer_NS.Types.Transformations.ChildComponentOfContainer;
 
 export function ClassDecorator<T>(x: (keyof ChildComponentOfContainer<T>)[]) {

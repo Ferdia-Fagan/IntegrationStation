@@ -1,4 +1,5 @@
-import {FilteredKeysByNotType, KeysOfPropertiesOfT, UnionToIntersection} from "../../../../../utils/Types";
+import {FilteredKeysByNotType, KeysOfPropertiesOfT} from "../../../utils/Filtering";
+import {UnionToIntersection} from "../../../utils/TypeTransformations";
 import {IntegrationContainer_NS} from "../IntegrationContainer/IntegrationContainer";
 
 export namespace ChildComponent_NS {

@@ -1,8 +1,8 @@
 import {pick} from "lodash";
+import {Constructor} from "../../factories/constructors/ConstructionObjectPropertySetter";
 import {
     IntegrationContainer_NS
-} from "../types/preIntegration/IntegrationContainer/IntegrationContainer";
-import {Constructor} from "../../../utils/Types";
+} from "../types/integration/preIntegration/IntegrationContainer/IntegrationContainer";
 import {ComponentInterfaceExtraction} from "./tests/Integration.test";
 import CoverageOfContainer = IntegrationContainer_NS.Types.Transformations.CoverageOfContainer;
 import ChildComponentOfContainer = IntegrationContainer_NS.Types.Transformations.ChildComponentOfContainer;

@@ -1,6 +1,6 @@
-import {ChildComponent_NS} from "./backend/categories/types/preIntegration/ChildComponent/ChildComponent";
-import {IntegratedComponent_NS} from "./backend/categories/types/preIntegration/IntegratedComponent/IntegratedComponent";
-import {IntegrationContainer_NS} from "./backend/categories/types/preIntegration/IntegrationContainer/IntegrationContainer";
+import {ChildComponent_NS} from "./backend/categories/types/integration/preIntegration/ChildComponent/ChildComponent";
+import {IntegratedComponent_NS} from "./backend/categories/types/integration/preIntegration/IntegratedComponent/IntegratedComponent";
+import {IntegrationContainer_NS} from "./backend/categories/types/integration/preIntegration/IntegrationContainer/IntegrationContainer";
 import IntegrationChildComponentContainerIntegrationConstructor = IntegrationContainer_NS.Types.IntegrationChildComponentContainerIntegrationConstructor;
 
 

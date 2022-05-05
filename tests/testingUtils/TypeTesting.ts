@@ -10,45 +10,20 @@ type RequiredFieldsOnly<T> = {
 export type AssertTypeLIsWithinR<
     L extends Partial<R>, R
 > = Required<R> extends Required<L> ? true : false
-    //{
-    // [key in keyof L as L[key] extends R[key] ? key : never]: L[key]
-// }
-    // Extract<L, L | R> extends never ? false : true
 
-interface L {
-    func1(): number
-    func2(): number
-}
+export type Exact<A, B> = A extends B
+    ? B extends A
+        ? A
+        : never
+    : never
 
-interface R {
-    func1(): number
-    func2(): number
-    func3(): number
-}
+// export type WithoutFunctions<T> = {
+//     [key in keyof T]: T[key] extends Function ? never : T[key]
+// }[keyof T]
 
-type a = AssertTypeLIsWithinR<L, R>
-type ab = AssertTypeLIsWithinR<L,R>
-
-interface NotL {
-    func1(): number
-    notFunc(): number
-}
-type b = AssertTypeLIsWithinR<NotL, R>
-type bb = AssertTypeLIsWithinR<NotL,R>
-
-
-type y = NotL | R
-type x = Extract<NotL, NotL | R>
-
-const xx: x = {
-    func1(): number {
-        return 0;
-    }, notFunc(): number {
-        return 0;
-    }
-
-}
-
-// type x = Exclude<
-//     L,
-// > Pick<R, keyof L>
+export type IsNever<T> = [T] extends [never] ? true : false
+export type TypesAreTheSame<L, R> =
+    Exclude<L, R> extends never ?
+        Exclude<R, L> extends never ? true : false
+        : false
+export type IsTWithinUnion<T, U> = T extends U ? true : false

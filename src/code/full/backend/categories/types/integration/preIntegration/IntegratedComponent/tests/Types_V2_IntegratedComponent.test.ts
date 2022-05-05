@@ -1,5 +1,5 @@
 import {assert, IsExact} from "conditional-type-checks";
-import {DoesLTypeExtendsRType} from "../../../../../../../../../tests/testingUtils/TypeTesting";
+import {DoesLTypeExtendsRType} from "../../../../../../../../../../tests/testingUtils/TypeTesting";
 import {IntegratedComponent_NS} from "../IntegratedComponent";
 import {IntegrationContainer_NS} from "../../IntegrationContainer/IntegrationContainer";
 import CoverageOfContainerAndComponentsArray = IntegrationContainer_NS.Types.Transformations.CoverageOfContainerAndComponentsArray;

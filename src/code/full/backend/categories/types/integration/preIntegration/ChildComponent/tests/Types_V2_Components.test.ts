@@ -1,6 +1,7 @@
 import {assert, IsExact, IsNever} from "conditional-type-checks";
+import {IsTWithinUnion, TypesAreTheSame} from "../../../../../../../../../../tests/testingUtils/TypeTesting";
+import {KeysOfPropertiesOfT} from "../../../../utils/Filtering";
 import {ChildComponent_NS} from "../ChildComponent";
-import {IsTWithinUnion, KeysOfPropertiesOfT, TypesAreTheSame} from "../../../../../../utils/Types";
 import SpecificChildComponent = ChildComponent_NS.Types.SpecificChildComponent;
 import ChildComponentT = ChildComponent_NS.Types.ChildComponentT;
 import ChildComponentsMapWithinContainer = ChildComponent_NS.Types.ChildComponentsMapWithinContainer;

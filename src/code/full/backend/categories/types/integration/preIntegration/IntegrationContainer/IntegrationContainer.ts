@@ -1,10 +1,11 @@
 import {
-    KeysOfPropertiesOfT, SubOfTWithOnlyMethods,
+    KeysOfPropertiesOfT,
+    SubOfTWithOnlyMethods,
     SubOfTWithOnlyProperties,
     TWithOnlyMethods,
-    TWithOnlyProperties,
-    UnionToIntersection
-} from "../../../../../utils/Types";
+    TWithOnlyProperties
+} from "../../../utils/Filtering";
+import {UnionToIntersection} from "../../../utils/TypeTransformations";
 import {ChildComponent_NS} from "../ChildComponent/ChildComponent";
 import {IntegratedComponent_NS} from "../IntegratedComponent/IntegratedComponent";
 

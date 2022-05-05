@@ -1,7 +1,7 @@
 import {keys} from "ts-transformer-keys";
-import {IntegrationContainer_NS} from "../../types/preIntegration/IntegrationContainer/IntegrationContainer";
-import {ConstructorWithPropertiesA, PropertyOfT} from "../../../../utils/ConstructionObjectPropertySetter";
-import {KeysOfComponentsOfT, KeysOfMethodsOfT, KeysOfPropertiesOfT} from "../../../../utils/Types";
+import {IntegrationContainer_NS} from "../../types/integration/preIntegration/IntegrationContainer/IntegrationContainer";
+import {ConstructorWithPropertiesA, PropertyOfT} from "../../../factories/constructors/ConstructionObjectPropertySetter";
+import {KeysOfComponentsOfT, KeysOfMethodsOfT, KeysOfPropertiesOfT} from "../../types/utils/Filtering";
 import {IntegrateChildComponents} from "../Integration";
 import ChildComponentOfContainer = IntegrationContainer_NS.Types.Transformations.ChildComponentOfContainer;
 
