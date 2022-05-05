@@ -7,6 +7,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.182",
+    "lodash": "^4.17.21",
     "ts-transformer-keys": "^0.4.3"
   },
   "devDependencies": {

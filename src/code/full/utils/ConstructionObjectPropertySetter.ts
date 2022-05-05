@@ -1,4 +1,6 @@
+import {ChildComponent_NS} from "../backend/categories/types/preIntegration/ChildComponent/ChildComponent";
 import {TWithOnlyMethods, TWithOnlyProperties} from "./Types";
+import ValidChildComponent = ChildComponent_NS.Types.Transformations.ValidChildComponent;
 
 export declare const PropertyOfT: unique symbol
 export type PropertyOfT<T> = {
@@ -23,9 +25,21 @@ export interface ConstructorWithSelfAssignments<
 
 export abstract class ConstructorWithPropertiesA<
     T,
-     SelfAssignments extends PropertyOfT<T> | MethodOfT<T> | MethodOrPropertyOfT<T>
+     SelfAssignments extends
+                    PropertyOfT<T>
+                |
+                    MethodOfT<T>
+                |
+                    MethodOrPropertyOfT<T>
+                |
+                    ValidChildComponent<T>
 > {
     constructor(objSelfAssignments: SelfAssignments) {
+        Object.assign(this, objSelfAssignments)
+        console.log()
+    }
+
+    integrate(objSelfAssignments: SelfAssignments){
         Object.assign(this, objSelfAssignments)
     }
 }

@@ -13,10 +13,12 @@ interface Iccc {
 
 interface Cc1 {
     cc1Function(): number
+    cc12Function(): number
 }
 
 interface Cc2 {
     cc2Function(): number
+    cc3Function(): number
 }
 
 interface Ic {
@@ -41,7 +43,12 @@ export type ComponentInterfaceExtraction<
 @IntegrateChildComponents<
     Iccc, Ic
 >(
-    [["cc1", keys<Ic>()]]
+    // "cc1"
+
+    [
+        ["cc1", ["cc1Function"]],
+        ["cc2", ["cc2Function"]]
+    ]
 )
 class IntegrationContainer
     extends ConstructorWithPropertiesA<
@@ -63,11 +70,17 @@ class IntegrationContainer
 describe('IntegrationContainer', () => {
     it('integrate properties', () => {
         const cc1: Cc1 = {
+            cc12Function(): number {
+                return 0;
+            },
             cc1Function(): number {
                 return 0;
             }
         }
         const cc2: Cc2 = {
+            cc3Function(): number {
+                return 0;
+            },
             cc2Function(): number {
                 return 0;
             }

@@ -1,4 +1,5 @@
 import {FilteredKeysByNotType, KeysOfPropertiesOfT, UnionToIntersection} from "../../../../../utils/Types";
+import {IntegrationContainer_NS} from "../IntegrationContainer/IntegrationContainer";
 
 export namespace ChildComponent_NS {
 
@@ -45,6 +46,7 @@ export namespace ChildComponent_NS {
 
         export namespace Transformations {
 
+            import ChildComponentOfContainer = IntegrationContainer_NS.Types.Transformations.ChildComponentOfContainer;
             export type CoverageByComponents<COMPONENTS extends ChildComponent_NS.Types.ChildComponentT<any>> =
                 UnionToIntersection<COMPONENTS>
 
@@ -56,6 +58,7 @@ export namespace ChildComponent_NS {
 
             export type ChildComponentSubInterfaceT<componentI, subI> = subI extends Partial<componentI> ? subI : never
 
+            export type ValidChildComponent<Iccc> = ChildComponentOfContainer<Iccc>[keyof ChildComponentOfContainer<Iccc>]
         }
 
     }
