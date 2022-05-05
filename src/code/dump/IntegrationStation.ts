@@ -86,14 +86,14 @@ export function IntegrateWithComponent<
 //     INTEGRATION,
 //     HOST // = ([ ...COMPONENTS ] & INTEGRATION)
 // >(
-//     components: [COMPONENT],
+//     categories: [COMPONENT],
 //     integration: INTEGRATION
 // ): HOST {
-//     components.reduce((hostInConstructionStasis: INTEGRATION , component: COMPONENT) => {
+//     categories.reduce((hostInConstructionStasis: INTEGRATION , component: COMPONENT) => {
 //         return IntegrateWithComponent<COMPONENT, INTEGRATION>(component, hostInConstructionStasis)
 //         // return hostInConstructionStasis
 //     }, integration)
-//     // components.reduce((hostInConstructionStasis: INTEGRATION , component: IntegratedComponent<HOST, INTEGRATION>) => {
+//     // categories.reduce((hostInConstructionStasis: INTEGRATION , component: IntegratedComponent<HOST, INTEGRATION>) => {
 //     //     IntegrateWithComponent(component, hostInConstructionStasis)
 //     // }, integration)
 // }

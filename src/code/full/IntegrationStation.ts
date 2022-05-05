@@ -1,4 +1,6 @@
-import {ChildComponent_NS, IntegratedComponent_NS, IntegrationContainer_NS} from "./Types";
+import {ChildComponent_NS} from "./backend/categories/types/preIntegration/ChildComponent/ChildComponent";
+import {IntegratedComponent_NS} from "./backend/categories/types/preIntegration/IntegratedComponent/IntegratedComponent";
+import {IntegrationContainer_NS} from "./backend/categories/types/preIntegration/IntegrationContainer/IntegrationContainer";
 import IntegrationChildComponentContainerIntegrationConstructor = IntegrationContainer_NS.Types.IntegrationChildComponentContainerIntegrationConstructor;
 
 

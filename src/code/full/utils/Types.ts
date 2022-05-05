@@ -20,8 +20,13 @@ export type FilteredKeysByNotType<T, U> = { [P in keyof T]: T[P] extends U ? nev
 export type KeysOfPropertiesOfT<T> = FilteredKeysByNotType<T, Function>
 export type KeysOfMethodsOfT<T> = FilteredKeysByType<T, Function>
 
+export type KeysOfComponentsOfT<T> = FilteredKeysByNotType<T, Function>
+
 export type TWithOnlyProperties<T> = Pick<T, KeysOfPropertiesOfT<T>>
+export type SubOfTWithOnlyProperties<T> = Partial<TWithOnlyProperties<T>>
 export type TWithOnlyMethods<T> = Pick<T, KeysOfMethodsOfT<T>>
+export type SubOfTWithOnlyMethods<T> = Partial<TWithOnlyMethods<T>>
+
 // export type KeyPropertiesOfT<T> = FilteredKeysByNotType<T, Function>
 // export type MethodPropertiesOfT<T> = FilteredKeysByType<T, Function>
 
@@ -68,3 +73,9 @@ export type IsTWithinUnion<T, U> = T extends U ? true : false
 export interface Constructor<T> {
     new (...args: any[]): T;
 }
+
+export type Exact<A, B> = A extends B
+    ? B extends A
+        ? A
+        : never
+    : never

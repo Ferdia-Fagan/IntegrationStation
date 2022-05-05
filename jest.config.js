@@ -1,20 +1,12 @@
-console.log("hello")
-
+/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
-    modulePaths: ["node_modules", "<rootDir>/src/*"],
-    transform: {
-        '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-          '<rootDir>/fileTransformer.js',
-        '^.+\\.ts?$': 'ts-jest'
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  verbose: true,
+  globals: {
+    'ts-jest': {
+      // Relative path from the folder where jest.config.js is located
+      astTransformers: { before: ['ts-jest-keys-transformer.js'] },
     },
-    preset: "ts-jest",
-    testEnvironment: 'node',
-    testRegex: '/tests/.*\\.(test|spec)?\\.(ts|tsx)$',
-    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-    // transform: {
-    //     ".+\\.ts$": "ts-jest",
-    // },
-    // testRegex: "(/tests/.*|(\\.|/)(test|spec))\\.ts$",
-    // moduleFileExtensions: ["ts", "js"],
-    // setupFilesAfterEnv: ["./tests/SetupTests.test.ts"],
+  }
 };

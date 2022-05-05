@@ -61,7 +61,7 @@ class TestClass {
 
 let T = new TestClass()
 console.log(T.add(2,3))
-console.log(T.add(2, undefined))
+// console.log(T.add(2, undefined))
 
 describe('help', function () {
     it('fds', () => {

@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
+        "module": "es6",
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "target": "es6",
@@ -8,24 +8,29 @@
         "noImplicitAny": true,
         "moduleResolution": "node",
         "sourceMap": true,
-        "outDir": "./extension/src",
-        "baseUrl": "./node_modules",
-        "rootDirs": ["./src/TS"],
+        "outDir": "./dist/",
+//        "rootDirs": ["./src/TS"],
         "strict": true,
-        "alwaysStrict": true
+//        "alwaysStrict": true,
+        "jsx": "react",
+        "allowJs": true
+//        "plugins": [
+//            { "transform": "transformer-module" },
+//        ]
     },
 
-    "include": [
-        "./src/TS/**/*.ts",
-//        "./tests/**/*.ts",
-        "./src/TS/**/*.d.ts",
-//        "fileTransformer.js",
-//        "tests/SetupTests.test.ts"
-    ],
+//    "include": [
+//        "./src/TS/**/*.ts",
+//        "./src/TS/**/*.d.ts",
+//    ],
 
     "exclude": [
         "node_modules",
-        "**/*.test.ts"
+    ],
+
+    "types": [
+        "node",
+        "jest"
     ]
 
 }
