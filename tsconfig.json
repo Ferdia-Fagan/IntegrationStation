@@ -8,24 +8,35 @@
         "noImplicitAny": true,
         "moduleResolution": "node",
         "sourceMap": true,
+        "declaration": true,
         "outDir": "./dist/",
 //        "rootDirs": ["./src/TS"],
         "strict": true,
 //        "alwaysStrict": true,
         "jsx": "react",
-        "allowJs": true
+        "allowJs": true,
+        "baseUrl": ".",
+//        "rootDir": ".",
+//        "paths": {
+//            "~*": [
+//                "./*"
+//            ]
+//        }
 //        "plugins": [
 //            { "transform": "transformer-module" },
 //        ]
     },
-
+    "include": [
+        "./src/**/*"
+//        "node_modules/whitelisted_module.ts"
+    ],
 //    "include": [
 //        "./src/TS/**/*.ts",
 //        "./src/TS/**/*.d.ts",
 //    ],
 
     "exclude": [
-        "node_modules",
+        "node_modules"
     ],
 
     "types": [

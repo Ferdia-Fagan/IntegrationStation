@@ -8,6 +8,12 @@ import CoverageOfContainer = IntegrationContainer_NS.Types.Transformations.Cover
 import ChildComponentOfContainer = IntegrationContainer_NS.Types.Transformations.ChildComponentOfContainer;
 import ChildComponentExtractionPairs = IntegrationContainer_NS.Types.Transformations.ChildComponentExtractionPairs;
 
+/**
+ * @typeParam Iccc - Integration child component container
+ * @param {IntegrationContainer_NS.Types.Transformations.ChildComponentExtractionPairs<Iccc>} childComponentsKeys
+ * @returns {<T extends {new(...args: any[]): {}}>(constructor: T) => {new(...args: any[]): any, prototype: {}}}
+ * @constructor
+ */
 export function IntegrateChildComponents<
     Iccc,
     Ici extends CoverageOfContainer<Iccc>
@@ -18,7 +24,7 @@ export function IntegrateChildComponents<
 >(
     // childComponentsKeys: (keyof ChildComponentOfContainer<Iccc>)[],
     childComponentsKeys: ChildComponentExtractionPairs<Iccc>
-){
+): <T extends { new(...args: any[]): {}; }>(constructor: T) => { new(...args: any[]): any; prototype: {}; }{
 
     return function injectionTarget <T extends { new (...args: any[]): {} }>(constructor: T): { new(...args: any[]): any; prototype: {} } {
         return class extends constructor {
