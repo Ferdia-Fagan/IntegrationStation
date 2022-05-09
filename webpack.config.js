@@ -3,9 +3,16 @@ const rootDir = path.resolve(__dirname, ".")
 const tsConfigPath = path.resolve(__dirname, "tsconfig.json")
 const keysTransformer = require('ts-transformer-keys/transformer').default;
 const {TsconfigPathsPlugin} = require('tsconfig-paths-webpack-plugin');
+const glob = require("glob");
+
 module.exports = {
     devtool: 'source-map',
     mode: 'development',
+    target: "node",
+    entry: glob.sync("./src/**/*.test.{ts,tsx}").reduce((acc, file) => {
+        acc[file.replace(/^\.\/src\//, "")] = file;
+        return acc;
+    }, {}),
     // entry: {
     //     main: "./src/index.js",
     // },
@@ -50,6 +57,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: '[name].js',
+        sourceMapFilename: '[name].js.map',
         library: 'dist'
-    },
+    }
 };
