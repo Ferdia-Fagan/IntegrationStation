@@ -1,6 +1,7 @@
 
-export type DoesLTypeExtendsRType<L, R extends keyof L> = Omit<L, keyof Pick<L, R>> extends never ? true : false
-    // Exclude<L, R> extends never ? true : false
+export type DoesLTypeExtendsRType<L, R> =
+    // Omit<L, keyof Pick<L, keyof R>> extends never ? true : false
+    R extends L ? true : false
     // Exclude<L, R> extends never ? true : false
 
 type RequiredFieldsOnly<T> = {
@@ -27,3 +28,4 @@ export type TypesAreTheSame<L, R> =
         Exclude<R, L> extends never ? true : false
         : false
 export type IsTWithinUnion<T, U> = T extends U ? true : false
+

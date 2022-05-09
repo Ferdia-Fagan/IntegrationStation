@@ -117,7 +117,10 @@ describe('IntegratedComponent_NS', () => {
                 function5(): number
             }
 
-            assert<DoesLTypeExtendsRType<Required<DesiredIntegratedComponentInterface>, Required<integrableComponent>>>(true)
+            assert<DoesLTypeExtendsRType<
+                Required<DesiredIntegratedComponentInterface>,
+                Required<specificIntegrableComponentT>
+            >>(true)
             // type X1 = Pick<right, keyof Required<integrableComponent>>
             // type X = Exclude<right, >
             // type fdslkj = keyof Required<integrableComponent>

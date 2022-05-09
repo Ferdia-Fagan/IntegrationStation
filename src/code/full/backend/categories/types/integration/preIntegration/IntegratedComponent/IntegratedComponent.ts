@@ -25,14 +25,24 @@ export namespace IntegratedComponent_NS {
                 Cc>[k] : never
         }
 
-        export type SpecificIntegrableComponent<Iccc,
+
+        /**
+         *
+         */
+        export type SpecificIntegrableComponent<
+            Iccc,
             Cc extends (ChildComponent_NS.Types.ChildComponentT<Iccc> | KeysOfPropertiesOfT<Iccc>),
-            Ic extends CoverageOfContainerAndComponentsType<Iccc, Cc>> =
+            Ic extends CoverageOfContainerAndComponentsType<Iccc, Cc>
+        > =
             Ic
 
-        export type IntegrableComponent<Iccc,
-            Cc extends (ChildComponent_NS.Types.ChildComponentT<Iccc> | KeysOfPropertiesOfT<Iccc>)> =
-            CoverageOfContainerAndComponentsType<Iccc, Cc> extends infer Ic ? Ic : never
+        export type IntegrableComponent<
+            Iccc,
+            Cc extends (ChildComponent_NS.Types.ChildComponentT<Iccc> | KeysOfPropertiesOfT<Iccc>)
+        > =
+            CoverageOfContainerAndComponentsType<Iccc, Cc> extends infer Ic
+                ? Ic
+                : never
 
     }
 
@@ -41,4 +51,18 @@ export namespace IntegratedComponent_NS {
 
     }
 
+}
+
+
+type X<T> = T
+
+
+/**
+ *
+ * @param {T} name
+ * @returns {string}
+ * @constructor
+ */
+function XXX<T>(name: T): string {
+    return ""
 }

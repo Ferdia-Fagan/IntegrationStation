@@ -10,6 +10,8 @@ export type SubOfTWithOnlyProperties<T> = Partial<TWithOnlyProperties<T>>
 export type TWithOnlyMethods<T> = Pick<T, KeysOfMethodsOfT<T>>
 export type SubOfTWithOnlyMethods<T> = Partial<TWithOnlyMethods<T>>
 
+
+
 // export type KeyPropertiesOfT<T> = FilteredKeysByNotType<T, Function>
 // export type MethodPropertiesOfT<T> = FilteredKeysByType<T, Function>
 
