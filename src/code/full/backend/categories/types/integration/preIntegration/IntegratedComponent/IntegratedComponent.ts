@@ -1,5 +1,5 @@
-import {KeysOfPropertiesOfT} from "../../../utils/Filtering";
-import {MergeTypeDominatingLeft} from "../../../utils/General";
+import {KeysOfPropertiesOfT} from "../../../../utils/types/Filtering";
+import {MergeTypeDominatingLeft} from "../../../../utils/types/General";
 import {ChildComponent_NS} from "../ChildComponent/ChildComponent";
 import {IntegrationContainer_NS} from "../IntegrationContainer/IntegrationContainer";
 

@@ -4,8 +4,8 @@ import {
     SubOfTWithOnlyProperties,
     TWithOnlyMethods,
     TWithOnlyProperties
-} from "../../../utils/Filtering";
-import {UnionToIntersection} from "../../../utils/TypeTransformations";
+} from "../../../../utils/types/Filtering";
+import {UnionToIntersection} from "../../../../utils/types/TypeTransformations";
 import {ChildComponent_NS} from "../ChildComponent/ChildComponent";
 import {IntegratedComponent_NS} from "../IntegratedComponent/IntegratedComponent";
 

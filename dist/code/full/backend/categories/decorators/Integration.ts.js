@@ -17212,108 +17212,6 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 }.call(this));
 
 
-/***/ }),
-
-/***/ "./src/code/full/backend/categories/decorators/Integration.ts":
-/*!********************************************************************!*\
-  !*** ./src/code/full/backend/categories/decorators/Integration.ts ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "IntegrateChildComponents": () => (/* binding */ IntegrateChildComponents)
-/* harmony export */ });
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
-
-/**
- * @typeParam Iccc - Integration child component container
- * @param {IntegrationContainer_NS.Types.Transformations.ChildComponentExtractionPairs<Iccc>} childComponentsKeys
- * @returns {<T extends {new(...args: any[]): {}}>(constructor: T) => {new(...args: any[]): any, prototype: {}}}
- * @constructor
- */
-function IntegrateChildComponents(
-// childComponentsKeys: (keyof ChildComponentOfContainer<Iccc>)[],
-childComponentsKeys) {
-    return function injectionTarget(constructor) {
-        return class extends constructor {
-            constructor(...args) {
-                super(...args);
-                const childComponents = args[0];
-                const x1 = childComponentsKeys.reduce((childComponentsExtracted, [key, methodsToExtract]) => {
-                    const y = childComponents[key];
-                    const x2 = (0,lodash__WEBPACK_IMPORTED_MODULE_0__.pick)(childComponents[key], methodsToExtract);
-                    const xc = Object.assign(childComponentsExtracted, x2);
-                    console.log();
-                    return xc;
-                }, {});
-                console.log();
-            }
-        };
-    };
-    // return <T extends { new (...args: any[]): {} }>(constructor: T) => {
-    //     // const x = args[0]
-    //     return class extends constructor {
-    //         constructor(...args: any[]) {
-    //             x = childComponentsKeys.forEach(([key,extractedFuncs]) => {
-    //                 console.log()
-    //                 const a = key
-    //             })
-    //         }
-    //
-    //     };
-    // }
-    // return <T extends { new (...args: any[]): {} }>(constructor: T) => {
-    //     const x = childComponentsKeys.reduce((childComponentsExtracted: any,[key,methodsToExtract]) => {
-    //         const x = pick(constructor.prototype[key], methodsToExtract)
-    //         return Object.assign(
-    //             childComponentsExtracted,
-    //             pick(constructor.prototype[key], methodsToExtract)
-    //         )
-    //     }, {})
-    //     console.log()
-    //     // Object.assign(constructor, )
-    // }
-    // return function (constructor: Function) {
-    //     const x1 = childComponentsKeys.reduce((childComponentsExtracted: any,[key,methodsToExtract]) => {
-    //         const y = constructor.prototype[key]
-    //         const x2 = pick(constructor.prototype[key], methodsToExtract)
-    //         return Object.assign(
-    //             childComponentsExtracted,
-    //             pick(constructor.prototype[key], methodsToExtract)
-    //         )
-    //     }, {})
-    //     console.log()
-    // }
-}
-
-
-/***/ }),
-
-/***/ "./src/code/full/backend/factories/constructors/ConstructionObjectPropertySetter.ts":
-/*!******************************************************************************************!*\
-  !*** ./src/code/full/backend/factories/constructors/ConstructionObjectPropertySetter.ts ***!
-  \******************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ConstructorWithPropertiesA": () => (/* binding */ ConstructorWithPropertiesA)
-/* harmony export */ });
-class ConstructorWithPropertiesA {
-    constructor(objSelfAssignments) {
-        Object.assign(this, objSelfAssignments);
-        console.log();
-    }
-    integrate(objSelfAssignments) {
-        Object.assign(this, objSelfAssignments);
-    }
-}
-
-
 /***/ })
 
 /******/ 	});
@@ -17412,60 +17310,80 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/*!*******************************************************************************!*\
-  !*** ./src/code/full/backend/categories/decorators/tests/Integration.test.ts ***!
-  \*******************************************************************************/
+/*!********************************************************************!*\
+  !*** ./src/code/full/backend/categories/decorators/Integration.ts ***!
+  \********************************************************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _factories_constructors_ConstructionObjectPropertySetter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../factories/constructors/ConstructionObjectPropertySetter */ "./src/code/full/backend/factories/constructors/ConstructionObjectPropertySetter.ts");
-/* harmony import */ var _Integration__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Integration */ "./src/code/full/backend/categories/decorators/Integration.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "IntegrateChildComponents": () => (/* binding */ IntegrateChildComponents)
+/* harmony export */ });
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
 
-
-let IntegrationContainer = class IntegrationContainer extends _factories_constructors_ConstructionObjectPropertySetter__WEBPACK_IMPORTED_MODULE_0__.ConstructorWithPropertiesA {
-    iccc() {
-        return 10;
-    }
-};
-IntegrationContainer = __decorate([
-    (0,_Integration__WEBPACK_IMPORTED_MODULE_1__.IntegrateChildComponents)(
-    // "cc1"
-    [
-        ["cc1", ["cc1Function"]],
-        ["cc2", ["cc2Function"]]
-    ])
-], IntegrationContainer);
-describe('IntegrationContainer', () => {
-    it('integrate properties', () => {
-        const cc1 = {
-            cc12Function() {
-                return 0;
-            },
-            cc1Function() {
-                return 0;
+/**
+ * @typeParam Iccc - Integration child component container
+ * @param {IntegrationContainer_NS.Types.Transformations.ChildComponentExtractionPairs<Iccc>} childComponentsKeys
+ * @returns {<T extends {new(...args: any[]): {}}>(constructor: T) => {new(...args: any[]): any, prototype: {}}}
+ * @constructor
+ */
+function IntegrateChildComponents(
+// childComponentsKeys: (keyof ChildComponentOfContainer<Iccc>)[],
+childComponentsKeys) {
+    return function injectionTarget(constructor) {
+        return class extends constructor {
+            constructor(...args) {
+                super(...args);
+                const childComponents = args[0];
+                const x1 = childComponentsKeys.reduce((childComponentsExtracted, [key, methodsToExtract]) => {
+                    const y = childComponents[key];
+                    const x2 = (0,lodash__WEBPACK_IMPORTED_MODULE_0__.pick)(childComponents[key], methodsToExtract);
+                    const xc = Object.assign(childComponentsExtracted, x2);
+                    console.log();
+                    return xc;
+                }, {});
+                console.log();
             }
         };
-        const cc2 = {
-            cc3Function() {
-                return 0;
-            },
-            cc2Function() {
-                return 0;
-            }
-        };
-        const inst = new IntegrationContainer({ cc1, cc2 });
-        expect(inst.cc1).toBe(cc1);
-        expect(inst.cc2).toBe(cc2);
-    });
-});
+    };
+    // return <T extends { new (...args: any[]): {} }>(constructor: T) => {
+    //     // const x = args[0]
+    //     return class extends constructor {
+    //         constructor(...args: any[]) {
+    //             x = childComponentsKeys.forEach(([key,extractedFuncs]) => {
+    //                 console.log()
+    //                 const a = key
+    //             })
+    //         }
+    //
+    //     };
+    // }
+    // return <T extends { new (...args: any[]): {} }>(constructor: T) => {
+    //     const x = childComponentsKeys.reduce((childComponentsExtracted: any,[key,methodsToExtract]) => {
+    //         const x = pick(constructor.prototype[key], methodsToExtract)
+    //         return Object.assign(
+    //             childComponentsExtracted,
+    //             pick(constructor.prototype[key], methodsToExtract)
+    //         )
+    //     }, {})
+    //     console.log()
+    //     // Object.assign(constructor, )
+    // }
+    // return function (constructor: Function) {
+    //     const x1 = childComponentsKeys.reduce((childComponentsExtracted: any,[key,methodsToExtract]) => {
+    //         const y = constructor.prototype[key]
+    //         const x2 = pick(constructor.prototype[key], methodsToExtract)
+    //         return Object.assign(
+    //             childComponentsExtracted,
+    //             pick(constructor.prototype[key], methodsToExtract)
+    //         )
+    //     }, {})
+    //     console.log()
+    // }
+}
 
 })();
 
 dist = __webpack_exports__;
 /******/ })()
 ;
-//# sourceMappingURL=Integration.test.ts.js.map
+//# sourceMappingURL=Integration.ts.js.map

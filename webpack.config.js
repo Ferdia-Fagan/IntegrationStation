@@ -8,8 +8,8 @@ const glob = require("glob");
 module.exports = {
     devtool: 'source-map',
     mode: 'development',
-    target: "node",
-    entry: glob.sync("./src/**/*.test.{ts,tsx}").reduce((acc, file) => {
+    // target: "node",
+    entry: glob.sync("./src/**/*.{ts,tsx}").reduce((acc, file) => {
         acc[file.replace(/^\.\/src\//, "")] = file;
         return acc;
     }, {}),

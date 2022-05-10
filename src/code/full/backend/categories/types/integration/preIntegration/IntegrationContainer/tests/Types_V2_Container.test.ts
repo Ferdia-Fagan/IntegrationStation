@@ -5,7 +5,7 @@ import {
     SubOfTWithOnlyProperties,
     TWithOnlyMethods,
     TWithOnlyProperties
-} from "../../../../utils/Filtering";
+} from "../../../../../utils/types/Filtering";
 import {IntegrationContainer_NS} from "../IntegrationContainer";
 import CoverageOfContainerAndComponents = IntegrationContainer_NS.Types.Transformations.CoverageOfContainerAndComponents;
 import CoverageOfContainerAndComponentsArray = IntegrationContainer_NS.Types.Transformations.CoverageOfContainerAndComponentsArray;

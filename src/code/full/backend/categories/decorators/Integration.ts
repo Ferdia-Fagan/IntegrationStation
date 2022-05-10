@@ -8,6 +8,7 @@ import CoverageOfContainer = IntegrationContainer_NS.Types.Transformations.Cover
 import ChildComponentOfContainer = IntegrationContainer_NS.Types.Transformations.ChildComponentOfContainer;
 import ChildComponentExtractionPairs = IntegrationContainer_NS.Types.Transformations.ChildComponentExtractionPairs;
 
+
 /**
  * @typeParam Iccc - Integration child component container
  * @param {IntegrationContainer_NS.Types.Transformations.ChildComponentExtractionPairs<Iccc>} childComponentsKeys
@@ -17,12 +18,7 @@ import ChildComponentExtractionPairs = IntegrationContainer_NS.Types.Transformat
 export function IntegrateChildComponents<
     Iccc,
     Ici extends CoverageOfContainer<Iccc>
-    // Ici extends CoverageOfContainer<Iccc>,
-    // ChildComponentContainerKeys = (ChildComponentOfContainer<Iccc>),
-    // Ici = Extract<Iccc, ChildComponentContainerKeys>
-// extends IntegrableComponent<Iccc, ChildComponentContainerKeys>,
 >(
-    // childComponentsKeys: (keyof ChildComponentOfContainer<Iccc>)[],
     childComponentsKeys: ChildComponentExtractionPairs<Iccc>
 ): <T extends { new(...args: any[]): {}; }>(constructor: T) => { new(...args: any[]): any; prototype: {}; }{
 
@@ -31,17 +27,14 @@ export function IntegrateChildComponents<
             constructor(...args: any[]) {
                 super(...args)
                 const childComponents = args[0]
-                const x1 = childComponentsKeys.reduce((childComponentsExtracted: any,[key,methodsToExtract]) => {
-                    const y = childComponents[key]
-                    const x2 = pick(childComponents[key], methodsToExtract)
-                    const xc = Object.assign(
-                        childComponentsExtracted,
-                        x2
+                const _this = this
+                childComponentsKeys.forEach(([key,methodsToExtract]) => {
+                    const extractedChildComponentMethods = pick(childComponents[key], methodsToExtract)
+                    Object.assign(
+                        _this,
+                        extractedChildComponentMethods
                     )
-                    console.log()
-                    return xc
                 }, {})
-                console.log()
             }
         }
     }

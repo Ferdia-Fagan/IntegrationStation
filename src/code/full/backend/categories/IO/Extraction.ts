@@ -1,5 +1,5 @@
 import { keys } from 'ts-transformer-keys';
-import {KeysOfMethodsOfT} from "../types/utils/Filtering";
+import {KeysOfMethodsOfT} from "../utils/types/Filtering";
 
 
 /**

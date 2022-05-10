@@ -1,7 +1,11 @@
 import {keys} from "ts-transformer-keys";
 import {IntegrationContainer_NS} from "../../types/integration/preIntegration/IntegrationContainer/IntegrationContainer";
-import {ConstructorWithPropertiesA, PropertyOfT} from "../../../factories/constructors/ConstructionObjectPropertySetter";
-import {KeysOfComponentsOfT, KeysOfMethodsOfT, KeysOfPropertiesOfT} from "../../types/utils/Filtering";
+import {
+    ConstructorWithPropertiesA,
+    ConstructorWithSelfAssignments,
+    PropertyOfT
+} from "../../../factories/constructors/ConstructionObjectPropertySetter";
+import {KeysOfComponentsOfT, KeysOfMethodsOfT, KeysOfPropertiesOfT} from "../../utils/types/Filtering";
 import {IntegrateChildComponents} from "../Integration";
 import ChildComponentOfContainer = IntegrationContainer_NS.Types.Transformations.ChildComponentOfContainer;
 
@@ -23,6 +27,7 @@ interface Cc2 {
 
 interface Ic {
     cc1Function(): number
+    cc12Function(): number
     cc2Function(): number
     iccc(): number
 }
@@ -46,7 +51,7 @@ export type ComponentInterfaceExtraction<
     // "cc1"
 
     [
-        ["cc1", ["cc1Function"]],
+        ["cc1", ["cc1Function", "cc12Function"]],
         ["cc2", ["cc2Function"]]
     ]
 )
@@ -58,6 +63,10 @@ class IntegrationContainer
     implements IntegrationContainerT
 {
 
+    constructor(objSelfAssignments: PropertyOfT<IntegrationContainerT>) {
+        super(objSelfAssignments);
+    }
+
     cc1: Cc1 | undefined
     cc2: Cc2 | undefined
 
@@ -65,6 +74,17 @@ class IntegrationContainer
         return 10
     }
 
+}
+
+
+function factory<ici>(
+    cons: ConstructorWithSelfAssignments<
+        IntegrationContainerT,
+        PropertyOfT<IntegrationContainerT>
+    >,
+    objProperties: PropertyOfT<IntegrationContainerT>
+): ici {
+    return new cons(objProperties) as ici
 }
 
 describe('IntegrationContainer', () => {
@@ -86,9 +106,13 @@ describe('IntegrationContainer', () => {
             }
         }
 
-        const inst = new IntegrationContainer({cc1, cc2})
-        expect(inst.cc1).toBe(cc1)
-        expect(inst.cc2).toBe(cc2)
+        const inst = factory<Ic>(IntegrationContainer,{cc1, cc2})
+        expect(inst.iccc()).toBe(10)
+        expect(inst.cc1Function).toBe(cc1.cc1Function)
+        expect(inst.cc12Function).toBe(cc1.cc12Function)
+        expect(inst.cc2Function).toBe(cc2.cc2Function)
+        // expect(inst.cc1Function()).toBe(0)
+        // expect(inst.cc2Function()).toBe(0)
 
     })
 

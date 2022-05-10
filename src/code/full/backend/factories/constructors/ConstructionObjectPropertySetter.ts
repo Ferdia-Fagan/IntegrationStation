@@ -1,5 +1,5 @@
 import {ChildComponent_NS} from "../../categories/types/integration/preIntegration/ChildComponent/ChildComponent";
-import {TWithOnlyMethods, TWithOnlyProperties} from "../../categories/types/utils/Filtering";
+import {TWithOnlyMethods, TWithOnlyProperties} from "../../categories/utils/types/Filtering";
 import ValidChildComponent = ChildComponent_NS.Types.Transformations.ValidChildComponent;
 
 export declare const PropertyOfT: unique symbol
@@ -18,7 +18,14 @@ export type MethodOrPropertyOfT<T> = {
 
 export interface ConstructorWithSelfAssignments<
     T,
-    SelfAssignments extends PropertyOfT<T> | MethodOfT<T> | MethodOrPropertyOfT<T>
+    SelfAssignments extends
+            PropertyOfT<T>
+        |
+            MethodOfT<T>
+        |
+            MethodOrPropertyOfT<T>
+        |
+            ValidChildComponent<T>
 > {
     new (objProperties: SelfAssignments): T;
 }
@@ -35,6 +42,9 @@ export abstract class ConstructorWithPropertiesA<
                     ValidChildComponent<T>
 > {
     constructor(objSelfAssignments: SelfAssignments) {
+        if('iccc' in this){
+            console.log()
+        }
         Object.assign(this, objSelfAssignments)
         console.log()
     }
