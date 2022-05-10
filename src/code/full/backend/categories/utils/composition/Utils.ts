@@ -8,3 +8,6 @@ export function Pipe<T>(
         input
     )
 }
+
+export function
+
